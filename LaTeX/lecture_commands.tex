@@ -1,0 +1,71 @@
+\usepackage{bm}
+\newcommand{\catop}{\mbox{}^\frown}
+\renewcommand{\v}[1]{\underline{#1}}
+\newcommand{\vt}[1]{\underline{#1}^\intercal}
+\newcommand{\uv}[1]{\underline{\hat{#1}}}
+\newcommand{\vd}[2]{\begin{pmatrix}#1 \\ #2 \end{pmatrix}}
+\newcommand{\vdt}[2]{\begin{pmatrix}#1 & #2 \end{pmatrix}}
+\newcommand{\vdthree}[3]{\begin{pmatrix}#1 \\ #2 \\ #3 \end{pmatrix}}
+\newcommand{\length}[1]{|\v{#1}|}
+\renewcommand{\dot}[2]{{\v{#1}^\intercal} \cdot {\v{#2}}}
+\newcommand{\matr}[1]{\mathbf{#1}}  
+\newcommand{\invmatr}[1]{\matr{#1}^{-1}}
+\newcommand{\transpose}[1]{\matr{#1}^{\intercal}}
+\newcommand{\Identity}{\matr{I}}
+
+\newcommand{\xdownarrow}[1]{%
+  {\left\downarrow\vbox to #1{}\right.\kern-\nulldelimiterspace}
+}
+\newcommand{\xuparrow}[1]{%
+  {\left\uparrow\vbox to #1{}\right.\kern-\nulldelimiterspace}
+}
+
+
+
+\newcommand{\pspiccie}[2]{
+\centerline{\hskip0.1cm\setlength\epsfxsize{#2cm}\epsfbox{../Figures/#1}}}
+\newcommand{\smallpspiccie}[1]{
+\centerline{\hskip0.1cm\setlength\epsfxsize{6.0cm}\epsfbox{../Figures/#1}}}
+
+\newcommand{\fullpara}[4]{
+#1 \; \mbox{}_{#2} \|_{#3} \; #4}
+\newcommand{\para}[2]{
+#1 \; \ \| \; #2}
+
+\newcommand{\socrative}{
+\begin{frame}{Exercise}
+
+GO TO socrative.com NOW
+
+\end{frame}
+}
+
+
+\newcommand{\socr}[1]{
+\begin{frame}{Exercise}
+
+Go to the moodle page now.
+
+\vskip2cm
+\hfill{\tiny{#1}}
+
+\end{frame}
+}
+
+\newcommand{\survey}[1]{
+\begin{frame}{Exercise}
+
+GO TO \url{#1} NOW
+
+
+\end{frame}
+}
+
+
+\newcounter{topic}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thesection}{\arabic{topic}}
+
+
+
+

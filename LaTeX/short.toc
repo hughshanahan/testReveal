@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Preamble}{2}{0}{1}
+\beamer@sectionintoc {2}{Motivation}{7}{0}{2}
+\beamer@sectionintoc {3}{Definitions and Background Mathematics}{14}{0}{3}
+\beamer@sectionintoc {4}{The number line}{17}{0}{4}
+\beamer@sectionintoc {5}{Two dimensions}{24}{0}{5}

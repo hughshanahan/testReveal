@@ -1,0 +1,5 @@
+\newcommand*\oldmacro{}
+\let\oldmacro\insertshortauthor% save previous definition
+\renewcommand*\insertshortauthor{%
+  \leftskip=.3cm% before the author could be a plus1fill ...
+ \lecturenumber :  \insertframenumber\,/\,\inserttotalframenumber\hfill\oldmacro}

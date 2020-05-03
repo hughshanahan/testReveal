@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Hugh Shanahan" />
+  <meta name="dcterms.date" content="2020-05-03" />
+  <title>CS2900 Topic 1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="testReveal_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="testReveal_files/reveal.js-3.3.0.1/css/theme/sky.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <script src="testReveal_files/header-attrs-2.1/header-attrs.js"></script>
+    <link href="testReveal_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="testReveal_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">CS2900 Topic 1</h1>
+    <h2 class="author">Hugh Shanahan</h2>
+    <h3 class="date">May 3, 2020</h3>
+</section>
+
+<section class="slide level2">
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });
+</script>
+</section>
+<section id="preamble" class="title-slide slide level1">
+<h1>Preamble</h1>
+
+</section>
+
+<section id="downloads" class="title-slide slide level1">
+<h1>Downloads</h1>
+<ul>
+<li><p>All details for this course can be found on Moodle</p></li>
+<li><p><a href="http://moodle.rhul.ac.uk/" class="uri">http://moodle.rhul.ac.uk/</a></p></li>
+<li><p>I will attempt to create a slidecast of each lecture that will be placed on moodle as well.</p></li>
+</ul>
+<p>Who am I ?</p>
+<ul>
+<li><p>Hugh Shanahan (but you can call me Hugh).</p></li>
+<li><p>My office is in the Bedford Building.</p></li>
+<li><p>Here are my office hours - please come by the admin office and ask them to give me a call.</p></li>
+<li><p>Monday 15-16</p></li>
+<li><p>Tuesday 15-16</p></li>
+<li><p>If you want some guaranteed time with me to answer question etc., please email me to arrange an appointment.</p></li>
+</ul>
+</section>
+
+<section id="assignments" class="title-slide slide level1">
+<h1>Assignments</h1>
+<ul>
+<li><p>Three quizzes - each worth 10% of the final grade.</p></li>
+<li><p>Each quiz will be 30 minutes in length so it can be done in an hour slot.</p></li>
+<li><p>A practice quiz will be set up this week.</p></li>
+<li><p>Deadlines are available on</p></li>
+</ul>
+</section>
+
+<section id="exam" class="title-slide slide level1">
+<h1>Exam</h1>
+<ul>
+<li>Answer all questions !</li>
+</ul>
+</section>
+
+<section id="labs" class="title-slide slide level1">
+<h1>Labs</h1>
+<ul>
+<li><p>Labs will run on a weekly basis.</p></li>
+<li><p>Thursday 10-12, Bedford 0-04 to 0-0.06, PC01.</p></li>
+<li><p>Class will be divided into two; each one taking one hour.</p></li>
+<li><p>No lab this week.</p></li>
+<li><p>We’ll be using Python and NumPy for this course.</p></li>
+<li><p>More specifically we will be using Jupyter notebooks and Binder.</p></li>
+</ul>
+</section>
+
+<section id="motivation" class="title-slide slide level1">
+<h1>Motivation</h1>
+
+</section>
+
+<section id="motivation-1" class="title-slide slide level1">
+<h1>Motivation</h1>
+<ul>
+<li><p>This course will focus on one, very regular class of data structures.</p></li>
+<li><p>Namely, vectors and matrices with almost invariably floating point entries.</p></li>
+<li><p>Linear Algebra is the branch of Mathematics to deal with this.</p></li>
+<li><p>Why bother??</p></li>
+</ul>
+</section>
+
+<section id="linear-algebra" class="title-slide slide level1">
+<h1>Linear Algebra</h1>
+<ul>
+<li><p>Linear Algebra is a vast branch of Mathematics with hugely powerful tools for us to use.</p></li>
+<li><p>Linear Algebra has a number of direct applications in Computer Science and every Computer Scientist should understand it. For example</p>
+<ul>
+<li><p>Computer Graphics</p></li>
+<li><p>Computer Vision</p></li>
+<li><p>Machine Learning and Artificial Intelligence</p></li>
+<li><p>Graph Theory</p></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="mathematics" class="title-slide slide level1">
+<h1>Mathematics</h1>
+<ul>
+<li><p>This course is shamelessly Mathematical BUT</p></li>
+<li><p>I assume no prior knowledge of Linear Algebra.</p></li>
+<li><p>It is very much grounded in concrete examples from CS.</p></li>
+</ul>
+</section>
+
+<section id="definitions-and-background-mathematics" class="title-slide slide level1">
+<h1>Definitions and Background Mathematics</h1>
+
+</section>
+
+<section id="definitions" class="title-slide slide level1">
+<h1>Definitions</h1>
+<table>
+<caption>Symbols used in this course.<span label="Symbols"></span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Type</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Natural numbers</td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{N}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span>,<span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>,<span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Integers</td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{Z}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\dots\)</span>,<span class="math inline">\(-2\)</span>,<span class="math inline">\(-1\)</span>,<span class="math inline">\(0\)</span>,<span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>,<span class="math inline">\(\dots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Reals</td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{R}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-\pi\)</span>,<span class="math inline">\(0\)</span>, <span class="math inline">\(e\)</span>, <span class="math inline">\(100.03\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Complex numbers</td>
+<td style="text-align: center;"><span class="math inline">\(\mathbb{C}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.0 + 4.95 i\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="notation" class="title-slide slide level1">
+<h1>Notation</h1>
+<table>
+<caption>Notation used in this course.<span label="Notation"></span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\equiv\)</span></td>
+<td style="text-align: center;">Defines</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\implies\)</span></td>
+<td style="text-align: center;">This Implies</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">iff</td>
+<td style="text-align: center;">If and Only if</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="trigonometry" class="title-slide slide level1">
+<h1>Trigonometry</h1>
+<p><img data-src="Figures/Topic1_preamble.png" style="height:3cm" alt="image" /></p>
+<p><span class="math display">\[\begin{aligned}
+\cos{\theta} = \frac{a}{h} \;\; &amp;, &amp;
+\sin{\theta} = \frac{o}{h} \;\; , \\
+\cos{(-\theta)} = \cos \theta \;\; &amp;,&amp;
+\sin{(-\theta)} = -\sin \theta \;\; \\
+\cos^2{\theta} + \sin^2{\theta} &amp;=&amp; 1 \;\; , \\
+\sin{(a+b)} &amp;=&amp; \sin{a} \cos{b} + \cos{a}\sin{b} \;\; , \\
+\cos{(a+b)} &amp;=&amp; \cos{a} \cos{b} - \sin{a} \sin{b} \;\; .   \end{aligned}\]</span></p>
+</section>
+
+<section id="the-number-line" class="title-slide slide level1">
+<h1>The number line</h1>
+
+</section>
+
+<section id="the-number-line-1" class="title-slide slide level1">
+<h1>The number line</h1>
+<p>First steps in understanding numbers (<span class="math inline">\(\mathbb{Z}\)</span>).</p>
+<p><img data-src="Figures/2000px-Number-line.png" style="height:0.75cm" alt="image" /></p>
+</section>
+
+<section id="the-reals" class="title-slide slide level1">
+<h1>The reals</h1>
+<p>Can add in reals easily in this picture <span class="math inline">\(\dots\)</span> (<span class="math inline">\(\mathbb{R}\)</span>).</p>
+<p><img data-src="Figures/Real_Number_line.png" style="height:2cm" alt="image" /></p>
+</section>
+
+<section id="direction" class="title-slide slide level1">
+<h1>Direction</h1>
+<p>Can think of an arrow from the origin to each number on the number line. <img data-src="Figures/1dvector.png" style="height:1.5cm" alt="image" /></p>
+<p>Arrow is length 4.5 going in a positive direction.</p>
+</section>
+
+<section id="direction-1" class="title-slide slide level1">
+<h1>Direction</h1>
+<p><img data-src="Figures/1dvectorExample2.png" style="height:1.5cm" alt="image" /></p>
+<p>Other arrow is length 1.66 going in a negative direction.</p>
+</section>
+
+<section id="operations---scaling" class="title-slide slide level1">
+<h1>Operations - scaling</h1>
+<p>Can scale the length of an arrow.</p>
+<p><img data-src="Figures/1dvectorScaled.png" style="height:1.5cm" alt="image" /></p>
+<p>Arrow of length 4.5 is scaled by a factor 1.5.</p>
+</section>
+
+<section id="operations---addition" class="title-slide slide level1">
+<h1>Operations - addition</h1>
+<p>Can add arrows - just put "tail to head".</p>
+<p><img data-src="Figures/1dvectorAddition.png" style="height:1.5cm" alt="image" /></p>
+<p>Arrow of length 4.5 going in positive direction plus arrow of length 2.5 going in a negative direction results in an arrow of length 2.0 going in a positive direction.</p>
+</section>
+
+<section id="operations---product" class="title-slide slide level1">
+<h1>Operations - product</h1>
+<p>Multiplying the signs tells us if the arrows are going in the same or opposite direction.</p>
+</section>
+
+<section id="two-dimensions" class="title-slide slide level1">
+<h1>Two dimensions</h1>
+
+</section>
+
+<section id="adding-another-number-line" class="title-slide slide level1">
+<h1>Adding another number line</h1>
+<p>Move into 2 dimensions.</p>
+<p><img data-src="Figures/2DGrid.png" style="height:6cm" alt="image" /></p>
+</section>
+
+<section id="moving-up-a-dimension" class="title-slide slide level1">
+<h1>Moving up a dimension</h1>
+<ul>
+<li><p>Instead of a position on the number line. You now have <strong>coordinates</strong>, represented by a pair of numbers <span class="math inline">\((a,b)\)</span>.</p></li>
+<li><p>For the most part we will assume that these numbers are reals <span class="math inline">\(a \in \mathbb{R}\)</span>, <span class="math inline">\(b \in \mathbb{R}\)</span>.</p></li>
+<li><p>Formally, these are elements of the Cartesian product <span class="math inline">\(\mathbb{R} \times \mathbb{R}\)</span> (go and check your CS1860 notes).</p></li>
+<li><p>But we could have grids which are <span class="math inline">\(\mathbb{N} \times \mathbb{N}\)</span>, <span class="math inline">\(\mathbb{Z} \times \mathbb{Z}\)</span>, <span class="math inline">\(\mathbb{C} \times \mathbb{C}\)</span> and so on.</p></li>
+</ul>
+</section>
+
+<section id="a-coordinate" class="title-slide slide level1">
+<h1>A coordinate</h1>
+<p><img data-src="Figures/2DGrid_plus_coordinate.png" style="height:6cm" alt="image" /></p>
+</section>
+
+<section id="vectors" class="title-slide slide level1">
+<h1>Vectors</h1>
+<ul>
+<li><p>Just as in the 1-d example, we can draw arrows from the origin to points on this grid.</p></li>
+<li><p>We don’t call these arrows, we call them <strong>vectors</strong>.</p></li>
+</ul>
+</section>
+
+<section id="vectors-1" class="title-slide slide level1">
+<h1>Vectors</h1>
+<p><img data-src="Figures/2DGrid_plus_vector.png" style="height:6cm" alt="image" /></p>
+</section>
+
+<section id="notation-1" class="title-slide slide level1">
+<h1>Notation</h1>
+<p>For reasons that will become clear we describe them as columns rather than rows. <span class="math display">\[\begin{pmatrix}1.1 \\ 2.5 \end{pmatrix}, \begin{pmatrix}-3.7 \\ 0.34 \end{pmatrix}\]</span></p>
+<p>As variables we use the following notation <span class="math display">\[\underline{v} = \begin{pmatrix}-4.67 \\ 0.76 \end{pmatrix}\]</span></p>
+</section>
+
+<section id="notation-contd." class="title-slide slide level1">
+<h1>Notation contd.</h1>
+<p>In textbooks you will also see the following alternatives .… <span class="math display">\[\mathbf{v}\;\; , \;\; \vec{v}\]</span> they all mean the same thing - a vector !</p>
+<p>If we want a vector in row form then there is an explicit operation to get that.</p>
+<p><span class="math display">\[\underline{v}^\intercal = \begin{pmatrix}-4.67 &amp; 0.76 \end{pmatrix}\]</span></p>
+<p>Exercise</p>
+<p>GO TO <a href="https://moodle.royalholloway.ac.uk/mod/quiz/view.php?id=462536" class="uri">https://moodle.royalholloway.ac.uk/mod/quiz/view.php?id=462536</a> NOW</p>
+</section>
+    </div>
+  </div>
+
+  <script src="testReveal_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="testReveal_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        chalkboard: {
+          toggleNotesButton: false,
+          theme: 'whiteboard',
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'testReveal_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
